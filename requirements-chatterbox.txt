@@ -1,4 +1,4 @@
 
 # --- Core TTS Application ---
 # Chatterbox TTS engine - installed directly from GitHub
-git+https://github.com/randombk/chatterbox.git@41dea452928694f15792d33cd9d19282076bdedf
+git+https://github.com/randombk/chatterbox.git@de098d67513fe272d4609abf2ac772201e9c4668

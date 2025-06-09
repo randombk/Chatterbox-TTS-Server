@@ -2,10 +2,10 @@ name: Build and Push Docker Container
 
 on:
   push:
-    branches: [ main, docker-release ]
+    branches: [ main, docker-release, randombk-customizations ]
     tags: [ 'v*' ]
   pull_request:
-    branches: [ main, docker-release ]
+    branches: [ main, docker-release, randombk-customizations ]
 
 env:
   REGISTRY: ghcr.io

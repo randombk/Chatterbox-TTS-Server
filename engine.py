@@ -93,12 +93,11 @@ def load_model() -> bool:
                 resolved_device_str = "cuda"
                 logger.info("CUDA requested and functional. Using CUDA.")
             else:
-                resolved_device_str = "cpu"
-                logger.warning(
-                    "CUDA was requested in config but functionality test failed. "
+                logger.error("CUDA was requested in config but functionality test failed. "
                     "PyTorch may not be compiled with CUDA support. "
-                    "Automatically falling back to CPU."
+                    "Aborting model load."
                 )
+                return False
 
         elif device_setting == "cpu":
             resolved_device_str = "cpu"

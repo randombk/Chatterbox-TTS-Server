@@ -13,10 +13,6 @@ torch                    # PyTorch deep learning framework (CPU)
 torchvision             # Computer vision utilities for PyTorch
 torchaudio               # Audio processing utilities for PyTorch
 
-# --- Core TTS Application ---
-# Chatterbox TTS engine - installed directly from GitHub
-git+https://github.com/randombk/chatterbox.git@41dea452928694f15792d33cd9d19282076bdedf
-
 # --- Web Framework & Server ---
 fastapi                         # Modern async web framework
 uvicorn[standard]               # ASGI server with performance extras
@@ -49,16 +45,3 @@ watchdog                      # File system event monitoring
 unidecode                     # Unicode text transliteration
 inflect                       # Natural language inflection
 tqdm                          # Progress bars for loops
-
-# ============================================================================
-# INSTALLATION NOTES:
-# 
-# 1. Ensure your virtual environment is activated before installation
-# 2. Run: pip install --upgrade pip
-# 3. Run: pip install -r requirements.txt
-# 4. For parselmouth issues, the package name is 'praat-parselmouth' on PyPI
-#    but you import it as 'import parselmouth' in Python code
-# 5. System dependencies may be required:
-#    - libsndfile (for soundfile package)
-#    - FFmpeg (for some audio processing features)
-# ============================================================================

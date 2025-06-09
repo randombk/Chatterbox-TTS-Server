@@ -28,16 +28,15 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 # Set up working directory
 WORKDIR /app
 
-# Copy requirements first to leverage Docker cache
-COPY requirements.txt .
-
 # Upgrade pip and install Python dependencies
 RUN pip3 install --no-cache-dir --upgrade pip
 
+# Install the dependencies first before installing the chatterbox fork, to maximize cache hits
+
 # Conditionally install CPU-only dependencies if RUNTIME is set to 'cpu' or not set
-COPY requirements.txt .
+COPY requirements-cpu.txt .
 RUN if [ "$RUNTIME" = "cpu" ] || [ -z "$RUNTIME" ]; then \
-    pip3 install --no-cache-dir -r requirements.txt; \
+    pip3 install --no-cache-dir -r requirements-cpu.txt; \
     fi
 
 # Conditionally install NVIDIA dependencies if RUNTIME is set to 'nvidia'
@@ -45,6 +44,9 @@ COPY requirements-nvidia.txt .
 RUN if [ "$RUNTIME" = "nvidia" ]; then \
     pip3 install --no-cache-dir -r requirements-nvidia.txt; \
     fi
+
+COPY requirements-chatterbox.txt .
+RUN pip3 install --no-cache-dir -r requirements-chatterbox.txt
 
 # Copy the rest of the application code
 COPY . .

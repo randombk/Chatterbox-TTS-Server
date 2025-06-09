@@ -32,14 +32,20 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Upgrade pip and install Python dependencies
-RUN pip3 install --no-cache-dir --upgrade pip && \
-    pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir --upgrade pip
+
+# Conditionally install CPU-only dependencies if RUNTIME is set to 'cpu' or not set
+COPY requirements.txt .
+RUN if [ "$RUNTIME" = "cpu" ] || [ -z "$RUNTIME" ]; then \
+    pip3 install --no-cache-dir -r requirements.txt; \
+    fi
+
 # Conditionally install NVIDIA dependencies if RUNTIME is set to 'nvidia'
 COPY requirements-nvidia.txt .
-
 RUN if [ "$RUNTIME" = "nvidia" ]; then \
     pip3 install --no-cache-dir -r requirements-nvidia.txt; \
     fi
+
 # Copy the rest of the application code
 COPY . .
 

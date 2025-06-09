@@ -15,7 +15,7 @@ torchaudio               # Audio processing utilities for PyTorch
 
 # --- Core TTS Application ---
 # Chatterbox TTS engine - installed directly from GitHub
-git+https://github.com/randombk/chatterbox.git@384e5c2135be47d855008479ab231f6c5df3ea35
+git+https://github.com/randombk/chatterbox.git@22883a120ec4d971bec0f6d7ddd248656cfa0cef
 
 # --- Web Framework & Server ---
 fastapi                         # Modern async web framework
